@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://bonct5gi6l6pm"]
+[gd_scene load_steps=2 format=3 uid="uid://bonct5gi6l6pm"]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp3wc"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_fp3wc")

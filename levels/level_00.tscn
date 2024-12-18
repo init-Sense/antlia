@@ -1,3 +1,11 @@
 [gd_scene format=3 uid="uid://w81uxd2416e5"]
 
 [node name="Level00" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="CanvasLayer"]
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/Parallax2D"]
+position = Vector2(364, 97)
+polygon = PackedVector2Array(209, 241, 190, 472, 513, 526, 586, 257)
