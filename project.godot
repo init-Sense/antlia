@@ -12,4 +12,14 @@ config_version=5
 
 config/name="Antlia"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://audio/": "blue",
+"res://levels/": "pink",
+"res://prefabs/": "purple",
+"res://scripts/": "teal"
+}
