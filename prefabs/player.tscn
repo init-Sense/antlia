@@ -1,9 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://bonct5gi6l6pm"]
+[gd_scene load_steps=5 format=3 uid="uid://bonct5gi6l6pm"]
+
+[ext_resource type="Script" uid="uid://r248qfche30" path="res://scripts/player.gd" id="1_72ieh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp3wc"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fp3wc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_72ieh"]
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_72ieh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_fp3wc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-3.27826e-07, -14.75)
+scale = Vector2(20, 15.25)
+mesh = SubResource("CapsuleMesh_fp3wc")
+
+[node name="Flute" type="MeshInstance2D" parent="."]
+position = Vector2(13.5, -18.875)
+scale = Vector2(5, 20.25)
+mesh = SubResource("BoxMesh_72ieh")

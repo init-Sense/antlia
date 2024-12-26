@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://drbj4cjib3rvo"]
+
+[ext_resource type="Script" uid="uid://cuwtufte20jy2" path="res://scripts/cell.gd" id="1_kef27"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kef27"]
+
+[node name="Cell" type="Node2D"]
+script = ExtResource("1_kef27")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(1.19209e-06, 0.115648)
+scale = Vector2(32.0363, 31.7687)
+mesh = SubResource("SphereMesh_kef27")

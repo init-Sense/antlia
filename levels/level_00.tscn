@@ -1,11 +1,29 @@
-[gd_scene format=3 uid="uid://w81uxd2416e5"]
+[gd_scene load_steps=5 format=3 uid="uid://w81uxd2416e5"]
+
+[ext_resource type="PackedScene" uid="uid://bonct5gi6l6pm" path="res://prefabs/player.tscn" id="1_gkh1h"]
+[ext_resource type="PackedScene" uid="uid://d3qpmtkdpruux" path="res://prefabs/grid_5x5.tscn" id="1_sj2j1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj2j1"]
+size = Vector2(1566, 47.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q2qjg"]
 
 [node name="Level00" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Grid" parent="." instance=ExtResource("1_sj2j1")]
+position = Vector2(320, -41)
+scale = Vector2(0.5, 0.5)
 
-[node name="Parallax2D" type="Parallax2D" parent="CanvasLayer"]
+[node name="Player" parent="." node_paths=PackedStringArray("grid") instance=ExtResource("1_gkh1h")]
+grid = NodePath("../Grid")
 
-[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/Parallax2D"]
-position = Vector2(364, 97)
-polygon = PackedVector2Array(209, 241, 190, 472, 513, 526, 586, 257)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 121.75)
+shape = SubResource("RectangleShape2D_sj2j1")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+position = Vector2(2.625, 122.5)
+scale = Vector2(1569.25, 47)
+mesh = SubResource("BoxMesh_q2qjg")

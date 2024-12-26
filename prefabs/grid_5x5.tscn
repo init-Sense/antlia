@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3qpmtkdpruux"]
+
+[ext_resource type="Script" uid="uid://d2wnk015y8iun" path="res://scripts/grid.gd" id="1_bounl"]
+[ext_resource type="PackedScene" uid="uid://drbj4cjib3rvo" path="res://prefabs/cell.tscn" id="2_5ar3y"]
+
+[node name="Grid5x5" type="Node2D"]
+script = ExtResource("1_bounl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="row_n2" type="Node2D" parent="."]
+position = Vector2(0, -100)
+
+[node name="n2_n2" parent="row_n2" instance=ExtResource("2_5ar3y")]
+position = Vector2(-110, 0)
+coords = Vector2i(-2, -2)
+
+[node name="n2_n1" parent="row_n2" instance=ExtResource("2_5ar3y")]
+position = Vector2(-55, 0)
+coords = Vector2i(-2, -1)
+
+[node name="n2_0" parent="row_n2" instance=ExtResource("2_5ar3y")]
+coords = Vector2i(-2, 0)
+
+[node name="n2_p1" parent="row_n2" instance=ExtResource("2_5ar3y")]
+position = Vector2(107, 0)
+coords = Vector2i(-2, 1)
+
+[node name="n2_p2" parent="row_n2" instance=ExtResource("2_5ar3y")]
+position = Vector2(54, 0)
+coords = Vector2i(-2, 2)
+
+[node name="row_n1" type="Node2D" parent="."]
+position = Vector2(0, -50)
+
+[node name="n1_n2" parent="row_n1" instance=ExtResource("2_5ar3y")]
+position = Vector2(-110, 0)
+coords = Vector2i(-1, -2)
+
+[node name="n1_n1" parent="row_n1" instance=ExtResource("2_5ar3y")]
+position = Vector2(-55, 0)
+coords = Vector2i(-1, -1)
+
+[node name="n1_0" parent="row_n1" instance=ExtResource("2_5ar3y")]
+coords = Vector2i(-1, 0)
+
+[node name="n1_p1" parent="row_n1" instance=ExtResource("2_5ar3y")]
+position = Vector2(107, 0)
+coords = Vector2i(-1, 1)
+
+[node name="n1_p2" parent="row_n1" instance=ExtResource("2_5ar3y")]
+position = Vector2(54, 0)
+coords = Vector2i(-1, 2)
+
+[node name="row_0" type="Node2D" parent="."]
+
+[node name="0_n2" parent="row_0" instance=ExtResource("2_5ar3y")]
+position = Vector2(-110, 0)
+coords = Vector2i(0, -2)
+
+[node name="0_n1" parent="row_0" instance=ExtResource("2_5ar3y")]
+position = Vector2(-55, 0)
+coords = Vector2i(0, -1)
+
+[node name="0_p0" parent="row_0" instance=ExtResource("2_5ar3y")]
+
+[node name="0_p1" parent="row_0" instance=ExtResource("2_5ar3y")]
+position = Vector2(107, 0)
+coords = Vector2i(0, 1)
+
+[node name="0_p2" parent="row_0" instance=ExtResource("2_5ar3y")]
+position = Vector2(54, 0)
+coords = Vector2i(0, 2)
+
+[node name="row_p1" type="Node2D" parent="."]
+position = Vector2(0, 50)
+
+[node name="p1_n2" parent="row_p1" instance=ExtResource("2_5ar3y")]
+position = Vector2(-110, 0)
+coords = Vector2i(1, -2)
+
+[node name="p1_n1" parent="row_p1" instance=ExtResource("2_5ar3y")]
+position = Vector2(-55, 0)
+coords = Vector2i(1, -1)
+
+[node name="p1_0" parent="row_p1" instance=ExtResource("2_5ar3y")]
+coords = Vector2i(1, 0)
+
+[node name="p1_p1" parent="row_p1" instance=ExtResource("2_5ar3y")]
+position = Vector2(107, 0)
+coords = Vector2i(1, 1)
+
+[node name="p1_p2" parent="row_p1" instance=ExtResource("2_5ar3y")]
+position = Vector2(54, 0)
+coords = Vector2i(1, 2)
+
+[node name="row_p2" type="Node2D" parent="."]
+position = Vector2(0, 100)
+
+[node name="p2_n2" parent="row_p2" instance=ExtResource("2_5ar3y")]
+position = Vector2(-110, 0)
+coords = Vector2i(2, -2)
+
+[node name="p2_n1" parent="row_p2" instance=ExtResource("2_5ar3y")]
+position = Vector2(-55, 0)
+coords = Vector2i(2, -1)
+
+[node name="p2_0" parent="row_p2" instance=ExtResource("2_5ar3y")]
+coords = Vector2i(2, 0)
+
+[node name="p2_p1" parent="row_p2" instance=ExtResource("2_5ar3y")]
+position = Vector2(107, 0)
+coords = Vector2i(2, 1)
+
+[node name="p2_p2" parent="row_p2" instance=ExtResource("2_5ar3y")]
+position = Vector2(54, 0)
+coords = Vector2i(2, 2)
