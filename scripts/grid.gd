@@ -10,6 +10,9 @@ extends Node2D
 @export var grid_size: int = 2
 @export var core_size: int = 1
 
+@onready var note_player: AudioStreamPlayer2D = $NotePlayer
+var major_scale = [0, 2, 4, 5, 7, 9, 11, 12]
+
 var grid: Dictionary = {}
 var current_position: Vector2i = Vector2i.ZERO
 var grid_center: Vector2i = Vector2i.ZERO
@@ -17,6 +20,7 @@ var links: Array[Vector2i] = []
 var current_cell_instance: MeshInstance2D
 var start_point_instance: MeshInstance2D
 var path_line: Line2D
+
 
 const DIRECTIONS = {
 	"up": Vector2i(-1, -1),
@@ -29,16 +33,19 @@ const DIRECTIONS = {
 	"up_left": Vector2i(-1, 0)
 }
 
+
 func _ready():
 	generate_grid()
 	setup_path_line()
 	setup_start_and_current_note()
+
 
 func setup_path_line():
 	path_line = Line2D.new()
 	path_line.width = 2.0
 	path_line.default_color = Color.WHITE
 	add_child(path_line)
+
 
 func setup_start_and_current_note():
 	start_point_instance = start_point_mesh.duplicate()
@@ -52,13 +59,16 @@ func setup_start_and_current_note():
 	links.append(Vector2i.ZERO)
 	update_path()
 
+
 func _process(_delta):
 	for direction in DIRECTIONS.keys():
 		if Input.is_action_just_pressed(direction):
 			move_note(DIRECTIONS[direction])
 
+
 func is_within_core(pos: Vector2i) -> bool:
 	return abs(pos.x - grid_center.x) <= core_size and abs(pos.y - grid_center.y) <= core_size
+
 
 func update_path():
 	var points = []
@@ -66,6 +76,7 @@ func update_path():
 		var local_pos = Vector2(link_pos) * default_spacing
 		points.append(local_pos)
 	path_line.points = PackedVector2Array(points)
+
 
 func generate_grid(center: Vector2i = Vector2i.ZERO):
 	var cells_to_keep = links.duplicate()
@@ -88,12 +99,14 @@ func generate_grid(center: Vector2i = Vector2i.ZERO):
 					alpha = clampf(alpha, 0.2, 0.9)
 					grid[pos].modulate.a = alpha
 
+
 func create_cell(pos: Vector2i):
 	var cell = cell_mesh.duplicate()
 	add_child(cell)
 	cell.visible = true
 	cell.position = Vector2(pos) * default_spacing
 	grid[pos] = cell
+
 
 func move_note(direction: Vector2i):
 	var target_pos = current_position + direction
@@ -109,3 +122,29 @@ func move_note(direction: Vector2i):
 	grid[target_pos].add_child(current_cell_instance)
 	links.append(target_pos)
 	update_path()
+	
+	play_note(direction)
+
+
+func play_note(direction: Vector2i):
+	var semitones: float
+	match direction:
+		DIRECTIONS.up:
+			semitones = major_scale[0]
+		DIRECTIONS.up_right:
+			semitones = major_scale[1]
+		DIRECTIONS.right:
+			semitones = major_scale[2]
+		DIRECTIONS.down_right:
+			semitones = major_scale[3]
+		DIRECTIONS.down:
+			semitones = major_scale[4]
+		DIRECTIONS.down_left:
+			semitones = major_scale[5]
+		DIRECTIONS.left:
+			semitones = major_scale[6]
+		DIRECTIONS.up_left:
+			semitones = major_scale[7]
+		
+	note_player.pitch_scale = 2 ** (semitones / 12)
+	note_player.play()
