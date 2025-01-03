@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3qpmtkdpruux"]
+[gd_scene load_steps=6 format=3 uid="uid://d3qpmtkdpruux"]
 
 [ext_resource type="Script" uid="uid://d2wnk015y8iun" path="res://scripts/grid.gd" id="1_bounl"]
+[ext_resource type="AudioStream" uid="uid://bayop6lvofg2o" path="res://audio/notes/note_01.mp3" id="2_5ar3y"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_g0toy"]
 
@@ -16,6 +17,9 @@ current_note = NodePath("Current")
 start_point_mesh = NodePath("Start")
 default_spacing = 50.0
 grid_size = 3
+
+[node name="NotePlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_5ar3y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
